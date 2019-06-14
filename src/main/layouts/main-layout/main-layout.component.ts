@@ -301,7 +301,7 @@ export class MainLayoutComponent implements OnInit {
     const teamId = Object.keys(TEAM)
       .find(k => teamName.toLowerCase().includes(k.toLowerCase()));
 
-    return `/src/assets/images/team/${teamId}_48x48.png`;
+    return `assets/images/team/${teamId}_48x48.png`;
   }
 
   logout(): void {
