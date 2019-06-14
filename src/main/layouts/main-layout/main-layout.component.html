@@ -1,0 +1,189 @@
+<div class="ui container">
+
+  <br><br><br>
+
+  <div class="ui right aligned grid">
+    <div class="left floated left aligned six wide column">
+      <h1 class="ui header">
+        Group matches phase<i class="angle down icon"></i>
+      </h1>
+    </div>
+    <div class="right floated right aligned six wide column">
+      <div class="ui image label">
+        <img src="/src/assets/images/avatar.jpg">
+        {{ currentUser.user }}
+      </div>
+    </div>
+  </div>
+
+  <br>
+
+  <!-- <div *ngIf="" class="ui active centered inline loader"></div> -->
+
+  <sui-tabset>
+
+    <div class="ui pointing secondary menu">
+      <a class="item active" suiTabHeader="A">Group A</a>
+      <a class="item" suiTabHeader="B">Group B</a>
+      <a class="item" suiTabHeader="C">Group C</a>
+      <div class="right menu">
+        <a class="item" (click)="logoutModal=true">
+          <span class="ui blue label">Logout</span>
+        </a>
+      </div>
+    </div>
+
+    <br>
+
+    <ng-container *ngFor="let group of groups; let i = index">
+      <div class="ui segment" [suiTabContent]="G[i]">
+        <br>
+
+        <div class="ui grid">
+          <div class="eight wide column">
+            <h2 class="ui header">Group {{ G[i] }}</h2>
+
+            <table class="ui collapsing very basic table">
+              <thead>
+                <tr class="center aligned ui">
+                  <th>Match</th>
+                  <th>Date - Time</th>
+                  <th colspan="6">Forecasts</th>
+                  <th *ngIf="false" colspan="2">Scores</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let m of group">
+                  <!-- match -->
+                  <td class="center aligned">{{ formatNumber(m.match) }}</td>
+                  <!-- date -->
+                  <td class="center aligned">
+                    <span class="ui basic label">{{ m.date | date:'E dd' }}, {{ m.date | date:'HH:mm' }}</span>
+                  </td>
+                  <!-- team 1 -->
+                  <td class="right aligned" style="font-weight: bold">{{ m.teams[0] }}</td>
+                  <!-- flag 1 -->
+                  <td><img [src]="getImgPath(m.teams[0])" class="flag" [alt]="m.teams[0]"
+                      style="width: 32px; height: 32px;"></td>
+                  <!-- forecast 1 -->
+                  <td>
+                    <div class="ui transparent large input">
+                      <input (change)="onForecast(m.match, -2, $event)" style="font-weight: bold" type="number" min="0"
+                        max="9">
+                    </div>
+                  </td>
+                  <!-- forecast 2 -->
+                  <td>
+                    <div class="ui transparent large input">
+                      <input (change)="onForecast(m.match, -1, $event)" style="font-weight: bold" type="number" min="0"
+                        max="9">
+                    </div>
+                  </td>
+                  <!-- flag 2 -->
+                  <td><img [src]="getImgPath(m.teams[1])" class="flag" [alt]="m.teams[1]"
+                      style="width: 32px; height: 32px; margin-left: -10px;"></td>
+                  <!-- team 2 -->
+                  <td class="left aligned" style="font-weight: bold">{{ m.teams[1] }}</td>
+                  <!-- scores -->
+                  <td *ngIf="false" class="center aligned">{{ m.score[0] }}</td>
+                  <td *ngIf="false" class="center aligned">{{ m.score[1] }}</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th *ngIf="false"></th>
+                  <th *ngIf="false"></th>
+                </tr>
+              </tfoot>
+            </table>
+
+          </div>
+
+          <div class="eight wide column">
+            <h2 class="ui header">&nbsp;</h2>
+            <span class="ui black label">Positions table</span>
+
+            <table class="ui collapsing striped table">
+              <thead>
+                <tr class="center aligned">
+                  <th class="left aligned" colspan="2">Country</th>
+                  <th>PJ</th>
+                  <th>G</th>
+                  <th>E</th>
+                  <th>P</th>
+                  <th>GF</th>
+                  <th>GC</th>
+                  <th>DF</th>
+                  <th>Pts</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let team of teams[i]" class="center aligned">
+                  <td>{{ team.id }}</td>
+                  <!-- <td><img [src]="getImgPath(team.name)" class="flag" [alt]="team.name" style="width: 24px; height: 24px;"></td> -->
+                  <td class="left aligned">{{ team.name }}</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                </tr>
+              </tbody>
+            </table>
+
+          </div>
+        </div>
+
+      </div>
+    </ng-container>
+
+  </sui-tabset>
+
+  <!-- <button *ngIf="complete" class="positive ui button">Positive Button</button> -->
+
+  <ng-container *ngIf="complete">
+    <div class="ui right aligned grid">
+      <div class="center aligned wide column">
+        <h1 class="ui header">
+          <button (click)="saveModal=true" class="positive huge ui button">Save!</button>
+        </h1>
+      </div>
+    </div>
+  </ng-container>
+
+</div>
+
+<sui-modal *ngIf="logoutModal" [isBasic]="true" [isClosable]="true" size="mini" (dismissed)="logoutModal=false"
+  (approved)="logout()" #modal>
+  <div class="header">Logout</div>
+  <div class="content">
+    <p>{{ currentUser.user }}, would you really like to logout?</p>
+  </div>
+  <div class="actions">
+    <button class="ui red button" (click)="modal.deny()">Cancel</button>
+    <button class="ui green button" (click)="modal.approve('done')" autofocus>Yes</button>
+  </div>
+</sui-modal>
+
+<sui-modal *ngIf="saveModal" [isBasic]="true" [isClosable]="true" size="tiny" (dismissed)="saveModal=false"
+  (approved)="save()" #modal>
+  <div class="header">Save</div>
+  <div class="content">
+    <p>{{ currentUser.user }}, after this point you won't have any chance to edit your forecasts!<br>Would you like to proceed?</p>
+  </div>
+  <div class="actions">
+    <button class="ui red button" (click)="modal.deny()">No</button>
+    <button class="ui green button" (click)="modal.approve('done')" autofocus>Yes</button>
+  </div>
+</sui-modal>

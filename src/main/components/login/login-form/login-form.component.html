@@ -1,0 +1,47 @@
+<div *ngIf="showLogin" class="ui card">
+  <div class="content">
+    <div class="header">Copa América 2019</div>
+  </div>
+  <div class="content">
+    <div class="ui mini form left aligned">
+      <div class="ui small message center aligned">
+        <p>Welcome to the Mx Fixture America Cup!<br>
+        <strong>You have one chance</strong> to set all your scores until groups matches.
+        There will be a second phase on June 26th for quarter and finals.
+      </div>
+      <div class="field" [ngClass]="{disabled: isLogin}">
+          <label>Mx user</label>
+          <sui-select #userSelect
+          class="selection"
+          labelField="user"
+          [formControl]="user"
+          [options]="options"
+          [isSearchable]="true">
+          <sui-select-option *ngFor="let option of userSelect.filteredOptions" [value]="option"></sui-select-option>
+        </sui-select>
+      </div>
+      <div class="field" [ngClass]="{disabled: isLogin}">
+        <label>Password</label>
+        <input
+        #passwordInput
+        type="password"
+        placeholder="Password"
+        [formControl]="password"
+        (keydown)="onKeydown($event)"
+        [maxlength]=maxLength>
+      </div>
+    </div>
+
+  </div>
+  <div class="extra content">
+    <div class="ui primary labeled icon small button"
+      [ngClass]="{loading: isLogin}"
+      (click)="validForm()">
+      <i class="icon small user"></i>
+      <span style="margin-left: -15px">Login</span>
+    </div>
+    <div *ngIf="textError" class="floating ui red small label" [innerHtml]="textError"></div>
+  </div>
+</div>
+
+<div *ngIf="!showLogin" class="ui active centered inline loader"></div>
