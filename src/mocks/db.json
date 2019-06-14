@@ -99,9 +99,245 @@
       "status": 1,
       "created_at": 1558021184699,
       "updated_at": 1558163825056
+    },
+    {
+      "id": 110,
+      "name": "Daniel",
+      "lastname": "Garzón",
+      "email": "dabielgarzon@multiplica.com",
+      "dni": 12345678,
+      "status": 1,
+      "created_at": 1558021184699,
+      "updated_at": 1558163825056
+    },
+    {
+      "id": 111,
+      "name": "Ciro",
+      "lastname": "Rodríguez",
+      "email": "ciro@multiplica.com",
+      "dni": 12345678,
+      "status": 1,
+      "created_at": 1558021184699,
+      "updated_at": 1558163825056
+    },
+    {
+      "id": 112,
+      "name": "Victor",
+      "lastname": "Rojas",
+      "email": "victorrojas@multiplica.com",
+      "dni": 12345678,
+      "status": 1,
+      "created_at": 1558021184699,
+      "updated_at": 1558163825056
+    },
+    {
+      "id": 113,
+      "name": "Jorge",
+      "lastname": "Sime",
+      "email": "jorgesime@multiplica.com",
+      "dni": 12345678,
+      "status": 1,
+      "created_at": 1558021184699,
+      "updated_at": 1558163825056
+    },
+    {
+      "id": 114,
+      "name": "Leonardo",
+      "lastname": "Alipázaga",
+      "email": "leonardo@multiplica.com",
+      "dni": 12345678,
+      "status": 1,
+      "created_at": 1558021184699,
+      "updated_at": 1558163825056
+    },
+    {
+      "id": 115,
+      "name": "Juan",
+      "lastname": "Pita",
+      "email": "juanpita@multiplica.com",
+      "dni": 12345678,
+      "status": 1,
+      "created_at": 1558021184699,
+      "updated_at": 1558163825056
+    },
+    {
+      "id": 116,
+      "name": "Raúl",
+      "lastname": "Valverde",
+      "email": "raulvalverde@multiplica.com",
+      "dni": 12345678,
+      "status": 1,
+      "created_at": 1558021184699,
+      "updated_at": 1558163825056
+    },
+    {
+      "id": 117,
+      "name": "Eduardo",
+      "lastname": "de la Cruz",
+      "email": "eduardo@multiplica.com",
+      "dni": 12345678,
+      "status": 1,
+      "created_at": 1558021184699,
+      "updated_at": 1558163825056
+    },
+    {
+      "id": 118,
+      "name": "Cesar",
+      "lastname": "Tapia",
+      "email": "cesartapia@multiplica.com",
+      "dni": 12345678,
+      "status": 1,
+      "created_at": 1558021184699,
+      "updated_at": 1558163825056
+    },
+    {
+      "id": 119,
+      "name": "Erick",
+      "lastname": "Contreras",
+      "email": "erick@multiplica.com",
+      "dni": 12345678,
+      "status": 1,
+      "created_at": 1558021184699,
+      "updated_at": 1558163825056
+    },
+    {
+      "id": 120,
+      "name": "Rigo",
+      "lastname": "Tovar",
+      "email": "rigoberto@multiplica.com",
+      "dni": 12345678,
+      "status": 1,
+      "created_at": 1558021184699,
+      "updated_at": 1558163825056
+    },
+    {
+      "id": 121,
+      "name": "Alexander",
+      "lastname": "Llanos",
+      "email": "alexander@multiplica.com",
+      "dni": 12345678,
+      "status": 1,
+      "created_at": 1558021184699,
+      "updated_at": 1558163825056
+    },
+    {
+      "id": 122,
+      "name": "Alexander",
+      "lastname": "Choy",
+      "email": "alexanderchoy@multiplica.com",
+      "dni": 12345678,
+      "status": 1,
+      "created_at": 1558021184699,
+      "updated_at": 1558163825056
+    },
+    {
+      "id": 123,
+      "name": "Teresa",
+      "lastname": "Ubillús",
+      "email": "teresa@multiplica.com",
+      "dni": 12345678,
+      "status": 1,
+      "created_at": 1558021184699,
+      "updated_at": 1558163825056
+    },
+    {
+      "id": 124,
+      "name": "Aldo",
+      "lastname": "Flores",
+      "email": "aldo@multiplica.com",
+      "dni": 12345678,
+      "status": 1,
+      "created_at": 1558021184699,
+      "updated_at": 1558163825056
+    },
+    {
+      "id": 125,
+      "name": "Nataly",
+      "lastname": "Uriarte",
+      "email": "nataly@multiplica.com",
+      "dni": 12345678,
+      "status": 1,
+      "created_at": 1558021184699,
+      "updated_at": 1558163825056
+    },
+    {
+      "id": 126,
+      "name": "Johan",
+      "lastname": "Carbonel",
+      "email": "johan@multiplica.com",
+      "dni": 12345678,
+      "status": 1,
+      "created_at": 1558021184699,
+      "updated_at": 1558163825056
+    },
+    {
+      "id": 127,
+      "name": "Ricardo",
+      "lastname": "Sanchez",
+      "email": "ricardo@multiplica.com",
+      "dni": 12345678,
+      "status": 1,
+      "created_at": 1558021184699,
+      "updated_at": 1558163825056
+    },
+    {
+      "id": 128,
+      "name": "Kevin",
+      "lastname": "Rodríguez",
+      "email": "kevin@multiplica.com",
+      "dni": 12345678,
+      "status": 1,
+      "created_at": 1558021184699,
+      "updated_at": 1558163825056
     }
   ],
-  "forecasts": [],
+  "forecasts": [
+    {
+      "user": 100,
+      "group_matches": [
+        3,
+        2,
+        3,
+        2,
+        3,
+        2,
+        3,
+        2,
+        0,
+        6,
+        54,
+        4,
+        3,
+        2,
+        3,
+        2,
+        3,
+        2,
+        3,
+        2,
+        3,
+        4,
+        4,
+        3,
+        3,
+        2,
+        3,
+        2,
+        3,
+        2,
+        2,
+        1,
+        4,
+        4,
+        4,
+        4
+      ],
+      "second_phase": [],
+      "points": 0,
+      "bet": true,
+      "id": 1
+    }
+  ],
   "scores": [
     {
       "group_matches_matches": [

@@ -1,10 +1,10 @@
 import { TEAM } from './ITeam.model';
 
 export enum PHASE {
-  GM = 'Gruoup Matches',
-  QF = 'Quarter-Finals',
-  SF = 'Semi-Finals',
-  FF = 'Finals'
+  GM = 'GM',
+  QF = 'QF',
+  SF = 'SF',
+  FF = 'FF'
 }
 
 export interface IMatch {

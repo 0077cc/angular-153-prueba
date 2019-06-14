@@ -13,4 +13,5 @@ export interface IUserOption {
   id: number;
   dni: number;
   user: string;
+  email: string;
 }

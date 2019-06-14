@@ -8,6 +8,7 @@ import { Observable, of } from 'rxjs';
 import { IUser, IUserOption } from 'src/main/models/IUser.model';
 import { IScores } from 'src/main/models/IScores.model';
 import { IForecast } from 'src/main/models/IForecast.model';
+import { IMatch } from 'src/main/models/IMatch.model';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,7 @@ export class AuthService {
   readonly BASE_URL: string = environment.apiURL;
   readonly API_USERS: string = 'users';
   readonly API_FORECASTS: string = 'forecasts';
+  readonly API_MATCHES: string = 'matches';
 
   user = null;
 
@@ -42,29 +44,10 @@ export class AuthService {
     return this.http.post<IForecast>(url, data);
   }
 
-  // login(email: string, password: string) {
-
-  //   return this.getUserByEmail(email).pipe(
-  //     map((res: any) => {
-  //       if (res.length) {
-  //         const [user] = res;
-
-  //         if (user.password === password) {
-  //           this.user = user;
-  //           sessionStorage.setItem('user', JSON.stringify(this.user));
-  //           return { logueado: true };
-  //         }
-  //       }
-
-  //       return { logueado: false };
-  //     })
-  //   );
-  // }
-
-  // private getUserByEmail(email: string) {
-  //   const API_URL = `${this.BASE_URL}/${this.API}/?email=${email}`;
-  //   return this.http.get(API_URL); // Observable
-  // }
+  getMatchesList(): Observable<Array<IMatch>> {
+    const url = `${this.BASE_URL}/${this.API_MATCHES}`;
+    return this.http.get<Array<IMatch>>(url);
+  }
 
   setUser(user: IUserOption) {
     this.user = user;

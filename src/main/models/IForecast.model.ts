@@ -3,4 +3,5 @@ export interface IForecast {
   group_matches: Array<number>;
   second_phase: Array<number>;
   points: number;
+  bet: boolean;
 }

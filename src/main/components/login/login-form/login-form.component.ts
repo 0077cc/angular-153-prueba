@@ -29,8 +29,8 @@ export class LoginFormComponent implements OnInit {
   password: AbstractControl;
 
   constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
-    this.minLength = 8;
-    this.maxLength = 16;
+    this.minLength = 16;
+    this.maxLength = 60;
   }
 
   ngOnInit() {
@@ -47,7 +47,8 @@ export class LoginFormComponent implements OnInit {
         this.options = response.map(user => ({
           id: user.id,
           dni: user.dni,
-          user: `${user.name} ${user.lastname}`
+          user: `${user.name} ${user.lastname}`,
+          email: user.email
         } as IUserOption));
       },
         () => { this.showLogin = false; },
@@ -104,7 +105,7 @@ export class LoginFormComponent implements OnInit {
           this.textError = 'Password';
         }
         if (errors.minlength) {
-          this.textError = 'At&nbsp;least&nbsp;8&nbsp;characters';
+          this.textError = 'At&nbsp;least&nbsp;16&nbsp;characters';
         }
         this.passwordInput.nativeElement.focus();
       }
@@ -117,7 +118,7 @@ export class LoginFormComponent implements OnInit {
   doLogin(): void {
     this.isLogin = true;
     setTimeout(() => {
-      if (this.userSelected.dni.toString() === this.password.value) {
+      if (this.userSelected.email === this.password.value) {
         delete this.textError;
         this.authService.setUser(this.userSelected);
         this.router.navigate(['home']);
