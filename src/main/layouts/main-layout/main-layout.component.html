@@ -61,7 +61,7 @@
           <br>
 
           <div class="ui grid">
-            <div class="eight wide column">
+            <div class="nine wide column">
               <h2 class="ui header">Group {{ G[i] }}</h2>
 
               <table class="ui collapsing very basic table">
@@ -70,7 +70,8 @@
                     <th>Match</th>
                     <th>Date - Time</th>
                     <th colspan="6">Forecasts</th>
-                    <th *ngIf="false" colspan="2">Scores</th>
+                    <th *ngIf="forecasts"colspan="2">Scores</th>
+                    <th *ngIf="forecasts">Points</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -87,29 +88,48 @@
                     <td><img [src]="getImgPath(m.teams[0])" class="flag" [alt]="m.teams[0]"
                         style="width: 32px; height: 32px;"></td>
                     <!-- forecast 1 -->
-                    <td>
+                    <td *ngIf="!forecasts">
                       <div class="ui transparent large input">
-                        <input [value]="myForecasts[m.match*2-2]" [disabled]="forecasts"
-                          (change)="onForecast(m.match, -2, $event)" style="font-weight: bold" type="number" min="0"
+                        <input class="forecast"
+                          [value]="myForecasts[m.match*2-2]"
+                          [disabled]="forecasts"
+                          (change)="onForecast(m.match, -2, $event)"
+                          type="number"
+                          min="0"
                           max="9">
                       </div>
+                    </td>
+                    <td *ngIf="forecasts" class="center aligned forecast disabled">
+                      {{ myForecasts[m.match*2-2] }}
                     </td>
                     <!-- forecast 2 -->
-                    <td>
+                    <td *ngIf="!forecasts">
                       <div class="ui transparent large input">
-                        <input [value]=myForecasts[m.match*2-1] id="fore-{{m.match}}-1" [disabled]="forecasts"
-                          (change)="onForecast(m.match, -1, $event)" style="font-weight: bold" type="number" min="0"
+                        <input class="forecast"
+                          [value]="myForecasts[m.match*2-1]"
+                          id="fore-{{m.match}}-1"
+                          [disabled]="forecasts"
+                          (change)="onForecast(m.match, -1, $event)"
+                          type="number"
+                          min="0"
                           max="9">
                       </div>
                     </td>
+                    <td *ngIf="forecasts" class="center aligned forecast disabled">
+                      {{ myForecasts[m.match*2-1] }}
+                    </td>
                     <!-- flag 2 -->
-                    <td><img [src]="getImgPath(m.teams[1])" class="flag" [alt]="m.teams[1]"
-                        style="width: 32px; height: 32px; margin-left: -10px;"></td>
+                    <td><img [src]="getImgPath(m.teams[1])" class="flag" [alt]="m.teams[1]"></td>
                     <!-- team 2 -->
                     <td class="left aligned" style="font-weight: bold">{{ m.teams[1] }}</td>
                     <!-- scores -->
-                    <td *ngIf="false" class="center aligned">{{ m.score[0] }}</td>
-                    <td *ngIf="false" class="center aligned">{{ m.score[1] }}</td>
+                    <td *ngIf="forecasts" class="center aligned forecast disabled">
+                      {{ m.score[0] === null ? '-' : m.score[0] }}
+                    </td>
+                    <td *ngIf="forecasts" class="center aligned forecast disabled">
+                      {{ m.score[1] === null ? '-' : m.score[1] }}
+                    </td>
+                    <td *ngIf="forecasts" class="center aligned">-</td>
                   </tr>
                 </tbody>
                 <tfoot>
@@ -122,15 +142,16 @@
                     <th></th>
                     <th></th>
                     <th></th>
-                    <th *ngIf="false"></th>
-                    <th *ngIf="false"></th>
+                    <th *ngIf="forecasts"></th>
+                    <th *ngIf="forecasts"></th>
+                    <th *ngIf="forecasts"></th>
                   </tr>
                 </tfoot>
               </table>
 
             </div>
 
-            <div class="eight wide column">
+            <div class="seven wide column">
               <h2 class="ui header">&nbsp;</h2>
               <span class="ui black label">Positions table</span>
 

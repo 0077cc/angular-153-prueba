@@ -11,8 +11,9 @@ import { IForecast } from 'src/main/models/IForecast.model';
   selector: 'app-main-layout',
   templateUrl: 'main-layout.component.html',
   styles: [`
-    input[type=number] {
+    .forecast {
       font-size: medium;
+      font-weight: bold;
       width: 25px;
       padding: 0;
       margin: 0;
@@ -27,6 +28,7 @@ import { IForecast } from 'src/main/models/IForecast.model';
 
 export class MainLayoutComponent implements OnInit {
 
+  TEAM = TEAM;
   matches: Array<IMatch>;
   groups: Array<Array<IMatch>>;
   teams: Array<Array<ITeam>>;
@@ -66,7 +68,6 @@ export class MainLayoutComponent implements OnInit {
     this.teams = [];
     this.G.forEach(groupName => this.teams.push(this.T.filter(team => team.group === groupName)
       .sort((a, b) => a.id - b.id)));
-
   }
 
   getMatches(): void {
@@ -107,6 +108,7 @@ export class MainLayoutComponent implements OnInit {
   showForecasts(): void {
     this.myForecasts = this.forecasts.group_matches;
     this.bet = this.forecasts.bet;
+    this.showPoints();
   }
 
   formatNumber(n: number): string { return n < 10 ? `0${n}` : n.toString(); }
@@ -145,6 +147,11 @@ export class MainLayoutComponent implements OnInit {
           this.forecasts = data;
         }
       });
+  }
+
+  showPoints(): void {
+    // console.log(this.forecasts);
+    // console.log(this.matches);
   }
 
 }
